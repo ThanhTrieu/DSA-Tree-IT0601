@@ -12,6 +12,7 @@
 import BalancedBinaryTree.Height;
 import BalancedBinaryTree.NodeBalanced;
 import BalancedBinaryTree.BalancedBinaryTree;
+import BinarySearchTree.SearchTree;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -88,20 +89,48 @@ public class Main {
 //            System.out.println("The tree is a complete binary tree");
 //        else
 //            System.out.println("The tree is not a complete binary tree");
-        Height height = new Height();
-        BalancedBinaryTree tree = new BalancedBinaryTree();
-        tree.root = new NodeBalanced(1);
-        tree.root.left = new NodeBalanced(2);
-        tree.root.right = new NodeBalanced(3);
-        tree.root.left.left = new NodeBalanced(4);
-        tree.root.left.right = new NodeBalanced(5);
-        tree.root.left.right.left = new NodeBalanced(6);
-        tree.root.left.right.left.left = new NodeBalanced(7);
-        tree.root.left.right.left.left.left = new NodeBalanced(8);
+//        Height height = new Height();
+//        BalancedBinaryTree tree = new BalancedBinaryTree();
+//        tree.root = new NodeBalanced(1);
+//        tree.root.left = new NodeBalanced(2);
+//        tree.root.right = new NodeBalanced(3);
+//        tree.root.left.left = new NodeBalanced(4);
+//        tree.root.left.right = new NodeBalanced(5);
+//        tree.root.left.right.left = new NodeBalanced(6);
+//        tree.root.left.right.left.left = new NodeBalanced(7);
+//        tree.root.left.right.left.left.left = new NodeBalanced(8);
+//
+//        if (tree.checkHeightBalance(tree.root, height))
+//            System.out.println("The tree is balanced");
+//        else
+//            System.out.println("The tree is not balanced");
 
-        if (tree.checkHeightBalance(tree.root, height))
-            System.out.println("The tree is balanced");
-        else
-            System.out.println("The tree is not balanced");
+        SearchTree tree = new SearchTree();
+        // insert node to binary tree
+        tree.root = tree.insert(tree.root, 50);
+        tree.insert(tree.root, 30);
+        tree.insert(tree.root, 20);
+        tree.insert(tree.root, 40);
+        tree.insert(tree.root, 70);
+        tree.insert(tree.root, 60);
+        tree.insert(tree.root, 80);
+
+        // tim key node in binary tree
+        int key = 80;
+        if(tree.search(tree.root, key) == null){
+            System.out.println(key + " not found");
+        } else {
+            System.out.println(key + " found");
+        }
+
+        System.out.println("BST");
+        tree.inorder(tree.root);
+
+        System.out.println("Delete left node 120");
+        tree.root = tree.delete(tree.root, 120);
+        tree.inorder(tree.root);
+        if(tree.search(tree.root, 20) == null){
+            System.out.println(" not found");
+        }
     }
 }
